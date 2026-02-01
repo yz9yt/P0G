@@ -1,17 +1,20 @@
-# Project 0 Gravity (P0G)
+# Project 0 Gravity (P0G) 🚀
 
-> **Transform AI assistants into methodical, autonomous software engineers that never forget.**
+> **Transform Antigravity into a methodical, autonomous software engineer that never forgets.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform: Antigravity](https://img.shields.io/badge/Platform-Antigravity-blue.svg)](https://deepmind.google/technologies/gemini/antigravity/)
 [![Status: Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green.svg)]()
+
+> ⚠️ **Antigravity Exclusive**: This methodology is designed specifically for [Google DeepMind's Antigravity](https://deepmind.google/technologies/gemini/antigravity/) and will not work with other AI assistants.
 
 ---
 
-## What is P0G?
+## 📖 What is P0G?
 
-**Project 0 Gravity** is an agent orchestration methodology that eliminates **Context Rot** — the degradation of AI understanding over time. Every task executes in a clean "Zero Gravity" state, inheriting knowledge only through persistent memory files.
+**Project 0 Gravity** is a revolutionary agent orchestration methodology built exclusively for **Google DeepMind's Antigravity**. It eliminates **Context Rot** — the degradation of AI understanding over time — by forcing every task to execute in a clean "Zero Gravity" state, inheriting knowledge only through persistent memory files.
 
-P0G transforms chaotic AI development into a **rigorous engineering discipline**:
+P0G leverages Antigravity's native **workflow system** (`.agent/workflows/`) to transform chaotic AI development into a **rigorous engineering discipline**:
 
 | Principle | Implementation |
 |-----------|----------------|
@@ -76,16 +79,76 @@ P0G transforms chaotic AI development into a **rigorous engineering discipline**
 
 ---
 
-## Quick Start
+## ⚡ Quick Start (Antigravity Only)
+
+> **Important**: P0G is designed exclusively for **Google DeepMind's Antigravity** AI assistant. It will not work with other AI tools.
+
+### Prerequisites
+
+- Access to **Antigravity** (Google DeepMind's AI coding assistant)
+- A project directory you want to work on
 
 ### Installation
 
+There are two ways to use P0G in Antigravity:
+
+#### Option 1: Clone into your project (Recommended)
+
+If you want P0G to manage your existing project:
+
 ```bash
-git clone https://github.com/YourUsername/P0G.git
-cd P0G
+# Navigate to your project
+cd /path/to/your-project
+
+# Clone P0G framework (this adds the workflows to your project)
+git clone https://github.com/yz9yt/P0G.git .p0g-framework
+
+# Copy workflows to your project
+cp -r .p0g-framework/.agent .
+cp -r .p0g-framework/agents .
+cp -r .p0g-framework/.p0g .
+cp .p0g-framework/AGENTS.md .
+cp .p0g-framework/progress.txt .
+
+# Optional: Remove cloned repo
+rm -rf .p0g-framework
+
+# Open in Antigravity
+# Antigravity will auto-detect .agent/workflows/ and make /p0g-* commands available
 ```
 
-### Usage
+#### Option 2: Start fresh with P0G
+
+If you're starting a new project:
+
+```bash
+# Clone P0G as your project foundation
+git clone https://github.com/yz9yt/P0G.git my-new-project
+cd my-new-project
+
+# Remove P0G's git history to start fresh
+rm -rf .git
+git init
+
+# Open in Antigravity
+# P0G workflows are ready to use
+```
+
+### Verification
+
+Once installed, verify P0G is available in Antigravity:
+
+1. Open your project in **Antigravity**
+2. Type `/p0g` in the chat
+3. You should see autocomplete suggestions for:
+   - `/p0g-np` (Discovery)
+   - `/p0g-plan` (Architecture)
+   - `/p0g-tasks` (Task Breakdown)
+   - `/p0g-loop` (Execution)
+
+### First Run
+
+Start your first P0G project:
 
 #### Phase 1: Discovery
 ```bash
