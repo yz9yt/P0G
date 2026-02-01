@@ -1,0 +1,30 @@
+{
+    "project_name": "Project 0 Gravity (P0G)",
+    "version": "1.0",
+    "status": "ready",
+    "description": "Metholodgy and toolset for agentic software engineering in Antigravity.",
+    "requirements": [
+        "Enforce linear phase workflow",
+        "Persistent memory (prd, progress, agents)",
+        "Autonomous loop with backup/verification",
+        "Spanish interaction, English development"
+    ],
+    "features": [
+        {
+            "id": "F1",
+            "name": "Phase Sentinel",
+            "description": "Slash commands in .agent/workflows/ to guide the agent."
+        },
+        {
+            "id": "F2",
+            "name": "Memory Core",
+            "description": "State management via root JSON and TXT files."
+        },
+        {
+            "id": "F3",
+            "name": "Safety Module",
+            "description": "Automated backups and quick rollback."
+        }
+    ],
+    "tasks": []
+}
