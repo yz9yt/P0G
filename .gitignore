@@ -1,7 +1,10 @@
-# P0G Internal State
-.p0g/backups/
-.p0g/snapshots/
-.p0g/checkpoints/
+# P0G Internal State (exclude backups but keep structure docs)
+.p0g/backups/*.tar.gz
+.p0g/backups/*.tgz
+.p0g/snapshots/*.tar.gz
+.p0g/snapshots/*.tgz
+.p0g/checkpoints/*.tar.gz
+.p0g/checkpoints/*.tgz
 .p0g/state.json
 
 # Dependencies
