@@ -1,5 +1,7 @@
 # Project 0 Gravity (P0G) 🚀
 
+![Project 0 Gravity Concept](assets/p0g-banner.png)
+
 > **Transform Antigravity into a methodical, autonomous software engineer that never forgets.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
