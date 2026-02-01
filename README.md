@@ -43,7 +43,7 @@ P0G leverages Antigravity's native **workflow system** (`.agent/workflows/`) to 
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                           P0G METHODOLOGY FLOW                                │
+│                           P0G METHODOLOGY FLOW                               │
 └──────────────────────────────────────────────────────────────────────────────┘
 
   /p0g-context       /p0g-features      /p0g-tasks         /p0g-loop
@@ -59,15 +59,15 @@ P0G leverages Antigravity's native **workflow system** (`.agent/workflows/`) to 
    prd.json            +features          +tasks           passes:true
    (vision)            (designed)        (atomized)        (verified)
 
-                    ┌─────────────────────────────────┐
-                    │       PERSISTENT MEMORY          │
-                    ├─────────────────────────────────┤
-                    │  prd.json      → Project state   │
-                    │  progress.txt  → Execution log   │
-                    │  errors.log    → Error tracking  │
-                    │  AGENTS.md     → Patterns & rules│
-                    │  .p0g/backups/ → Safety snapshots│
-                    └─────────────────────────────────┘
+                  ┌───────────────────────────────────┐
+                  │       PERSISTENT MEMORY           │
+                  ├───────────────────────────────────┤
+                  │  prd.json      → Project state    │
+                  │  progress.txt  → Execution log    │
+                  │  errors.log    → Error tracking   │
+                  │  AGENTS.md     → Patterns & rules │
+                  │  .p0g/backups/ → Safety snapshots │
+                  └───────────────────────────────────┘
 ```
 
 ### Phase Dependencies
