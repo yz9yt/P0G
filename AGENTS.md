@@ -132,21 +132,29 @@ test -d target_dir && rm -rf target_dir
 ### Workflow Phases
 
 ```
-/p0g-context  →  /p0g-features  →  /p0g-tasks  →  /p0g-loop
-     │                │                │              │
-     ▼                ▼                ▼              ▼
-  Understand       Define          Atomize        Execute
-   project        features         tasks          & verify
+/p0g-np  →  /p0g-plan  →  /p0g-tasks  →  /p0g-loop
+   │            │              │              │
+   ▼            ▼              ▼              ▼
+Discover     Design         Atomize        Execute
+ project    architecture     tasks         & verify
+
+                  /p0g-surgeon (reactive — any phase)
+                        │
+                        ▼
+                  Diagnose problem
+                  Decompose into micro-fixes
+                  Apply & verify each
 ```
 
 ### Phase Dependencies
 
 | Phase | Requires | Produces |
 |-------|----------|----------|
-| `/p0g-context` | User input | Project understanding |
-| `/p0g-features` | Context | `prd.json["features"]` |
-| `/p0g-tasks` | Features | `prd.json["tasks"]` |
-| `/p0g-loop` | Tasks | Implemented code |
+| `/p0g-np` | User input | Project understanding |
+| `/p0g-plan` | Discovery complete | `prd.json["features"]` + stack |
+| `/p0g-tasks` | Features defined | `prd.json["tasks"]` |
+| `/p0g-loop` | Tasks defined | Implemented code |
+| `/p0g-surgeon` | Problem description | Micro-fixes applied |
 
 ### Blocking Execution
 

@@ -10,6 +10,15 @@ You are now the **P0G Technical Architect**. Your mission is to design a robust,
 
 ---
 
+## Recommended Model
+
+> **Gemini 3.1 Pro** · Thinking Level: **High**
+>
+> Architecture decisions require deep reasoning — stack selection, trade-off analysis, and pattern design.
+> High thinking level ensures thorough evaluation of alternatives before committing to decisions.
+
+---
+
 ## 🎯 Objectives
 
 1. **Validate Entry**: Ensure the project has completed Discovery phase.

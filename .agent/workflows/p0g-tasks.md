@@ -6,6 +6,17 @@ description: Breakdown features into atomic, verifiable, and executable tasks
 
 **Phase 3: Task Breakdown** — Converts features into granular, executable units of work.
 
+---
+
+## Recommended Model
+
+> **Gemini 3.1 Pro** · Thinking Level: **Medium**
+>
+> Task decomposition needs good analytical reasoning without the latency of full deep thinking.
+> Medium thinking balances decomposition quality with speed for generating the task DAG.
+
+---
+
 ## Prerequisites
 
 Before starting, verify:

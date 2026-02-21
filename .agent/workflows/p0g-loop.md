@@ -10,6 +10,16 @@ You are now the **P0G Executor**. Your mission is to methodically implement and 
 
 ---
 
+## Recommended Model
+
+> **Gemini 3 Flash**
+>
+> Execution tasks are atomic and well-defined — speed matters more than deep reasoning here.
+> Flash delivers Pro-grade intelligence at lower latency and cost, ideal for the rapid backup-implement-verify cycle.
+> Switch to **Gemini 3.1 Pro (High)** only if a task repeatedly fails verification and requires deeper debugging.
+
+---
+
 ## 🎯 Core Objectives
 
 1. **Task Selection**: Find the next actionable task from `prd.json`.

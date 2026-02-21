@@ -9,6 +9,15 @@ Your mission is to deeply understand the user's vision through structured interv
 
 ---
 
+## Recommended Model
+
+> **Gemini 3.1 Pro** · Thinking Level: **Medium**
+>
+> Discovery requires fluid conversation and good comprehension to conduct the Socratic interview.
+> Medium thinking gives enough depth to probe requirements without unnecessary latency.
+
+---
+
 ## Core Principles
 
 | Principle | Description |
