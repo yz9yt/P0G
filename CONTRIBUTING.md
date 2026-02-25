@@ -6,168 +6,169 @@ Thank you for your interest in contributing to **Project 0 Gravity**! This docum
 
 ## How to Contribute
 
-### 🐛 Reporting Bugs
+### Reporting Bugs
 
-Found a bug? Please open an issue with:
-- **Description**: Clear description of the bug
+Found a bug? Open an issue with:
+- **Description**: What went wrong
 - **Steps to Reproduce**: Exact steps to trigger the issue
 - **Expected Behavior**: What should happen
-- **Actual Behavior**: What actually happens
-- **Environment**: Antigravity version, OS, etc.
+- **Actual Behavior**: What actually happened
+- **Environment**: Antigravity version, OS, model used
 
-### 💡 Suggesting Features
+### Suggesting Features
 
-Have an idea for enhancing P0G? Open an issue with:
+Have an idea? Open an issue with:
 - **Use Case**: What problem does it solve?
 - **Proposed Solution**: How would it work?
 - **Alternatives**: Other approaches considered
-- **Impact**: Who benefits from this?
 
-### 📖 Improving Documentation
+### Areas for Contribution
 
-Documentation improvements are always welcome:
-- Fix typos or unclear explanations
-- Add examples or use cases
-- Translate to other languages
-- Improve workflow clarity
+| Area | Examples |
+|------|----------|
+| **Workflows** | Improve `/p0g-np`, `/p0g-plan`, `/p0g-tasks`, `/p0g-loop`, `/p0g-surgeon` |
+| **Agent Prompts** | Refine prompts in `agents/p0g/prompts/` for better guidance |
+| **Paradigms** | Add new paradigm templates in `paradigms/` (e.g., OOP, DDD, reactive) |
+| **Skills** | Add new safety or automation skills in `agents/p0g/skills/` |
+| **Installer** | Improve `install.sh` for more platforms or package managers |
 
-### 🔧 Code Contributions
+---
 
-#### Areas for Contribution
+## Project Structure
 
-1. **Workflow Enhancements**: Improve `/p0g-*` workflows
-2. **Prompts**: Refine agent prompts for better guidance
-3. **Skills**: Add new safety or automation skills
-4. **Templates**: Create project templates for common stacks
-5. **Verification Tools**: Better verification command generators
+```
+P0G/
+├── .agent/workflows/         # Slash commands — the core P0G phases
+│   ├── p0g-np.md             # /p0g-np: Discovery (Phase 1)
+│   ├── p0g-plan.md           # /p0g-plan: Architecture (Phase 2)
+│   ├── p0g-tasks.md          # /p0g-tasks: Task breakdown (Phase 3)
+│   ├── p0g-loop.md           # /p0g-loop: Execution (Phase 4)
+│   └── p0g-surgeon.md        # /p0g-surgeon: Reactive bug fixer
+│
+├── agents/p0g/
+│   ├── prompts/              # Agent personalities loaded by workflows
+│   │   ├── discovery.md      # Socratic interviewer
+│   │   ├── architect.md      # Technical designer
+│   │   ├── tasker.md         # Task decomposer
+│   │   ├── executor.md       # Implementation engineer
+│   │   └── surgeon.md        # Problem decomposer & micro-fixer
+│   └── skills/
+│       └── SKILL.md          # Backup/rollback/recovery commands
+│
+├── paradigms/                # Optional architectural rule templates
+│   └── functional.md         # Functional programming paradigm
+│
+├── .p0g/                     # Safety infrastructure (backup dirs)
+├── install.sh                # One-liner installer (macOS + Linux)
+├── AGENTS.md                 # Agent guidelines and learned patterns
+├── prd.json                  # P0G's own project definition
+├── progress.txt              # Execution log
+├── README.md                 # Main documentation
+├── CONTRIBUTING.md           # This file
+└── LICENSE                   # MIT
+```
 
-#### Process
+---
+
+## Development Process
 
 1. **Fork** the repository
 2. **Create a branch**: `git checkout -b feature/your-feature-name`
-3. **Make changes** following the P0G methodology itself:
-   - Create `prd.json` for your contribution
-   - Break down into atomic tasks
-   - Verify each change
-4. **Test thoroughly**: Run through a complete P0G workflow
-5. **Document**: Update README or add new docs
-6. **Commit**: Use clear, descriptive commit messages
-7. **Submit PR**: Describe changes, testing done, and impact
-
----
-
-## Development Guidelines
+3. **Make changes** — follow the guidelines below
+4. **Test**: Run through a P0G workflow with your changes
+5. **Commit**: Use the commit format below
+6. **Submit PR**: Use the PR template below
 
 ### Code Style
 
-- **Workflows**: Use markdown with clear sections
-- **Prompts**: Clear, actionable instructions in English
-- **Scripts**: POSIX-compliant bash when possible
-- **JSON**: Follow existing `prd.json` schema
+| File Type | Rules |
+|-----------|-------|
+| Workflows (`.agent/workflows/`) | Markdown with clear sections, frontmatter with `description:` |
+| Agent Prompts (`agents/p0g/prompts/`) | Clear, actionable English. Tables for rules. Anti-patterns section. |
+| Paradigms (`paradigms/`) | Must include: principles, per-phase instructions, code review checklist |
+| Scripts (`install.sh`) | POSIX-compliant bash. Works on macOS and Linux. |
+| JSON (`prd.json`) | Follow existing schema |
 
-### Testing
+### Workflow File Format
 
-Before submitting:
-- [ ] Test the workflow with a real project
-- [ ] Verify all verification commands work
-- [ ] Check documentation is updated
-- [ ] Ensure backwards compatibility
+Every workflow file must have:
+
+```markdown
+---
+description: Short description shown in autocomplete
+---
+
+# /p0g-command-name (Title)
+
+> One-line summary of what this phase does.
+
+## Recommended Model
+
+> **Model** · Thinking Level: **Level**
+> Why this model/level is recommended.
+
+## [Rest of workflow...]
+```
+
+### Paradigm File Format
+
+Every paradigm file must include:
+
+1. Installation instructions at the top
+2. Core principles as mandatory rules
+3. Per-phase instructions (how it applies to `/p0g-np`, `/p0g-plan`, `/p0g-tasks`, `/p0g-loop`, `/p0g-surgeon`)
+4. Code review checklist
+5. Anti-patterns table
 
 ### Commit Messages
 
-Format:
+Format: `<type>: <short description>`
+
+Types: `feat`, `fix`, `docs`, `refactor`, `chore`
+
 ```
-<type>: <short description>
+feat: Add OOP paradigm template
 
-<optional longer description>
-
-<optional footer>
-```
-
-Types:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `refactor`: Code refactoring
-- `test`: Test additions or changes
-- `chore`: Maintenance tasks
-
-Example:
-```
-feat: Add rollback verification to /p0g-loop
-
-Adds automated backup verification before rollback operations
-to prevent corrupted backup restoration.
-
-Closes #42
+Adds paradigms/oop.md with SOLID principles, dependency injection
+patterns, and per-phase instructions for P0G workflows.
 ```
 
 ---
 
-## Pull Request Guidelines
-
-### Before Submitting
-
-- [ ] Code follows project style guidelines
-- [ ] Documentation is updated
-- [ ] All tests pass
-- [ ] Commit messages are clear
-- [ ] Branch is up to date with main
-
-### PR Description Template
+## Pull Request Template
 
 ```markdown
 ## Description
-Brief description of changes
+Brief description of changes.
 
 ## Type of Change
-- [ ] Bug fix
-- [ ] New feature
+- [ ] New workflow or workflow improvement
+- [ ] New or refined agent prompt
+- [ ] New paradigm template
+- [ ] Installer improvement
 - [ ] Documentation update
-- [ ] Refactoring
+- [ ] Bug fix
 
 ## Testing
-How was this tested?
+How was this tested? (e.g., "Ran full P0G cycle on a test project")
 
 ## Checklist
-- [ ] Code follows style guidelines
-- [ ] Documentation updated
-- [ ] Tests added/updated
-- [ ] No breaking changes
+- [ ] Follows existing file format and style
+- [ ] Tested with Antigravity
+- [ ] Documentation updated (README, AGENTS.md if needed)
+- [ ] No breaking changes to existing workflows
 ```
 
 ---
 
-## Community Guidelines
+## Community
 
-### Code of Conduct
-
-- Be respectful and inclusive
-- Provide constructive feedback
-- Focus on what's best for the community
-- Show empathy toward others
-
-### Getting Help
-
-- Check existing issues and documentation first
-- Ask in GitHub Discussions for questions
-- Tag maintainers only when necessary
-
----
-
-## Recognition
-
-Contributors will be:
-- Listed in the README
-- Credited in release notes
-- Acknowledged in the community
+- Be respectful and constructive
+- Check existing issues before opening new ones
+- Contributors are credited in release notes
 
 ---
 
 ## License
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
-
----
-
-**Thank you for making P0G better! 🚀**

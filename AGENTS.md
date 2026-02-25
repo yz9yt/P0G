@@ -50,27 +50,45 @@ Every agent invocation is stateless. Never assume:
 
 ```
 project_root/
-├── .p0g/                    # Reserved: internal state and backups
-│   ├── backups/             # Timestamped backups before modifications
-│   ├── state.json           # Current execution state
-│   └── history/             # Execution history logs
+├── .agent/
+│   ├── workflows/           # Slash commands (/p0g-*)
+│   │   ├── p0g-np.md        # Phase 1: Discovery
+│   │   ├── p0g-plan.md      # Phase 2: Architecture
+│   │   ├── p0g-tasks.md     # Phase 3: Task breakdown
+│   │   ├── p0g-loop.md      # Phase 4: Execution
+│   │   └── p0g-surgeon.md   # Reactive: Bug decomposer
+│   └── rules/               # Optional: paradigm rules (e.g., functional.md)
 ├── agents/
 │   └── p0g/
-│       └── prompts/         # Agent prompt templates
-├── .agent/
-│   └── workflows/           # Workflow definitions (/p0g-* commands)
-├── prd.json                 # Project definition: features, tasks, status
-├── progress.txt             # Execution log (append-only)
+│       ├── prompts/         # Agent personalities
+│       │   ├── discovery.md
+│       │   ├── architect.md
+│       │   ├── tasker.md
+│       │   ├── executor.md
+│       │   └── surgeon.md
+│       └── skills/
+│           └── SKILL.md     # Backup/rollback/recovery
+├── .p0g/                    # Safety infrastructure
+│   ├── backups/             # Full project snapshots
+│   ├── snapshots/           # Task-level before/after
+│   ├── checkpoints/         # Feature-level milestones
+│   └── surgery.json         # Active surgical plan (if any)
+├── prd.json                 # Single source of truth
+├── progress.txt             # Append-only execution log
 ├── errors.log               # Error tracking
-└── AGENTS.md                # This file: guidelines and learned patterns
+└── AGENTS.md                # This file: guidelines and patterns
 ```
 
 ### Reserved Paths
 
 | Path | Purpose | Access |
 |------|---------|--------|
-| `.p0g/` | Internal tool state | Read/Write (system only) |
-| `.p0g/backups/` | Pre-modification snapshots | Write before edits |
+| `.p0g/` | Safety infrastructure | Read/Write (system only) |
+| `.p0g/backups/` | Full project snapshots | Write before edits |
+| `.p0g/snapshots/` | Task-level snapshots | Write during execution |
+| `.p0g/checkpoints/` | Feature milestones | Write on feature completion |
+| `.p0g/surgery.json` | Active surgical plan | Read/Write during /p0g-surgeon |
+| `.agent/rules/` | Paradigm rules (optional) | Read only (loaded by Antigravity) |
 | `prd.json` | Project definition | Read/Write (structured) |
 | `progress.txt` | Execution log | Append only |
 | `AGENTS.md` | Guidelines and patterns | Append patterns only |
@@ -166,9 +184,8 @@ Discover     Design         Atomize        Execute
 
 | Status | Meaning |
 |--------|---------|
-| `needs_context` | Run `/p0g-context` |
-| `needs_features` | Run `/p0g-features` |
-| `needs_tasks` | Run `/p0g-tasks` |
+| `discovery` | Run `/p0g-np` |
+| `planning` | Run `/p0g-plan` |
 | `ready_for_execution` | Run `/p0g-loop` |
 | `in_progress` | Execution ongoing |
 | `completed` | All tasks passed |
