@@ -91,6 +91,29 @@ curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/install.sh | bash
 
 This downloads P0G, copies the workflow files into your project, and cleans up. Your existing code is **never modified or deleted**.
 
+### Option C: Install with a paradigm
+
+P0G ships with optional paradigm templates that enforce architectural rules across all phases. Install one alongside P0G:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/install.sh | bash -s -- --paradigm=functional
+```
+
+This installs P0G **plus** copies the paradigm file to `.agent/rules/`, where Antigravity loads it automatically as a persistent rule. The agent will follow functional programming principles in every phase.
+
+Available paradigms:
+
+| Paradigm | Flag | What it enforces |
+|----------|------|------------------|
+| **Functional** | `--paradigm=functional` | Pure core + imperative shell, immutable data, errors as values, effects as descriptions |
+
+You can also add a paradigm to an existing P0G project manually:
+
+```bash
+# Copy from the P0G repo
+curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/paradigms/functional.md -o .agent/rules/functional.md
+```
+
 ### What gets installed
 
 ```

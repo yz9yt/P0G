@@ -6,6 +6,9 @@ set -euo pipefail
 # Quick install (into current project):
 #   curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/install.sh | bash
 #
+# Install with a paradigm (e.g., functional programming):
+#   curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/install.sh | bash -s -- --paradigm=functional
+#
 # Install globally (p0g-init command available everywhere):
 #   curl -sSL https://raw.githubusercontent.com/yz9yt/P0G/main/install.sh | bash -s -- --global
 #
@@ -14,11 +17,13 @@ set -euo pipefail
 P0G_REPO="https://github.com/yz9yt/P0G.git"
 P0G_TMP="/tmp/p0g-install-$$"
 GLOBAL_INSTALL=false
+PARADIGM=""
 
 # Parse args
 for arg in "$@"; do
   case "$arg" in
     --global|-g) GLOBAL_INSTALL=true ;;
+    --paradigm=*) PARADIGM="${arg#--paradigm=}" ;;
   esac
 done
 
@@ -194,6 +199,22 @@ else
   warn "progress.txt exists — kept yours"
 fi
 
+# --- Paradigm (optional) ---
+
+if [ -n "$PARADIGM" ]; then
+  PARADIGM_FILE="$P0G_TMP/paradigms/${PARADIGM}.md"
+  if [ -f "$PARADIGM_FILE" ]; then
+    mkdir -p .agent/rules
+    cp "$PARADIGM_FILE" ".agent/rules/${PARADIGM}.md"
+    info "Paradigm '${PARADIGM}' → .agent/rules/${PARADIGM}.md"
+  else
+    warn "Paradigm '${PARADIGM}' not found. Available:"
+    for f in "$P0G_TMP"/paradigms/*.md; do
+      [ -f "$f" ] && echo -e "      - $(basename "$f" .md)"
+    done
+  fi
+fi
+
 # --- .gitignore ---
 
 P0G_GITIGNORE_ENTRIES="# P0G internal state
@@ -241,3 +262,7 @@ echo -e "    /p0g-tasks     Gemini 3.1 Pro · Medium"
 echo -e "    /p0g-loop      Gemini 3 Flash"
 echo -e "    /p0g-surgeon   Gemini 3.1 Pro · High → Medium"
 echo ""
+if [ -n "$PARADIGM" ]; then
+  echo -e "  ${BOLD}Paradigm:${NC} ${PARADIGM} (loaded as Antigravity rule)"
+  echo ""
+fi
